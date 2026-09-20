@@ -29,34 +29,56 @@
             color: #2D312E;
             font-family: 'Inter', sans-serif;
         }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-[#C5A880]/30">
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-[#C5A880]/30 relative overflow-x-hidden">
 
-    <header class="w-full py-4 px-5 bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-[#F4EFE6] shadow-xs">
+    <!-- Background Glow Effects -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#C5A880]/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="absolute bottom-10 right-0 w-80 h-80 bg-[#6B7A63]/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+    <!-- Header -->
+    <header class="w-full py-4 px-5 bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-[#F4EFE6]/60 shadow-xs">
         <div class="max-w-md mx-auto flex justify-between items-center">
-            <a href="#" class="font-bold text-sm tracking-tight text-[#2D312E] flex items-center gap-2">
-                <span class="w-7 h-7 bg-[#F4EFE6] rounded-full flex items-center justify-center text-xs">🕊️</span> 
-                <span>Halal-Hakikat-Hub</span>
+            <a href="#" class="font-bold text-sm tracking-tight text-[#2D312E] flex items-center gap-2 group">
+                <span class="w-8 h-8 bg-gradient-to-br from-[#F4EFE6] to-[#C5A880]/20 rounded-xl flex items-center justify-center text-sm shadow-inner group-hover:rotate-12 transition-transform">🕊️</span> 
+                <span class="bg-gradient-to-r from-[#2D312E] to-[#6B7A63] bg-clip-text text-transparent font-extrabold">Halal-Hakikat-Hub</span>
             </a>
-            <div class="flex items-center gap-1.5 bg-[#F4EFE6]/60 p-1 rounded-xl">
+            <div class="flex items-center gap-1 bg-[#F4EFE6]/80 p-1 rounded-xl border border-[#F4EFE6]">
                 <span class="text-[11px] px-2.5 py-1 bg-white rounded-lg font-bold text-[#2D312E] shadow-2xs">TR</span>
-                <span class="text-[11px] px-2.5 py-1 text-stone-500 font-medium">EN</span>
+                <span class="text-[11px] px-2.5 py-1 text-stone-400 font-medium">EN</span>
             </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="max-w-md w-full mx-auto px-4 py-6 flex-grow space-y-5">
         
-        <!-- Hero Section -->
-        <section class="text-center space-y-3.5 bg-white p-6 rounded-3xl shadow-xs border border-[#F4EFE6]/80">
-            <div class="inline-flex items-center justify-center w-14 h-14 bg-[#F4EFE6] text-[#6B7A63] rounded-2xl text-xl mb-0.5 shadow-inner">
+        <!-- Hero Section with Welcome Banner -->
+        <section class="text-center space-y-4 bg-white/90 backdrop-blur-sm p-7 rounded-3xl shadow-xs border border-[#F4EFE6] relative overflow-hidden">
+            <div class="absolute top-0 right-0 transform translate-x-4 -translate-y-4 w-24 h-24 bg-[#C5A880]/10 rounded-full blur-xl pointer-events-none"></div>
+            
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#F4EFE6] to-stone-100 text-[#6B7A63] rounded-2xl text-2xl mb-1 shadow-inner animate-float border border-[#F4EFE6]">
                 ✨
             </div>
-            <h1 class="text-xl font-bold tracking-tight text-[#2D312E] leading-snug">
-                Gerçek Huzuru ve Sevgiyi Keşfedin
-            </h1>
-            <p class="text-xs text-stone-600 leading-relaxed font-normal">
+            
+            <div class="space-y-2">
+                <span class="inline-block px-3 py-1 bg-[#F4EFE6] text-[#6B7A63] rounded-full text-[10px] font-bold tracking-wider uppercase">
+                    Hoş Geldiniz • Kalpten Kalbe
+                </span>
+                <h1 class="text-xl font-extrabold tracking-tight text-[#2D312E] leading-snug">
+                    Gerçek Huzuru ve Sevgiyi Keşfedin
+                </h1>
+            </div>
+            
+            <p class="text-xs text-stone-600 leading-relaxed font-normal px-1">
                 Hayatın anlamını ve derin bir ruhsal huzuru arayan sizleri içtenlikle karşılıyoruz. Burada kalbinize dokunacak hikayeler, gerçeği arayanlar için rehberler ve değerli hakikatler bulabilirsiniz.
             </p>
         </section>
@@ -64,65 +86,71 @@
         <!-- Action Links Section -->
         <section class="space-y-3">
             <!-- YouTube Video Link Button -->
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 bg-white hover:bg-red-50/50 border border-[#F4EFE6] rounded-2xl shadow-2xs transition group">
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 bg-white/90 hover:bg-red-50/40 border border-[#F4EFE6] rounded-2xl shadow-2xs transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group">
                 <div class="flex items-center space-x-3.5">
-                    <div class="w-11 h-11 bg-red-600 text-white rounded-2xl flex items-center justify-center font-bold text-sm shadow-sm group-hover:scale-105 transition">
+                    <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 text-white rounded-2xl flex items-center justify-center font-bold text-sm shadow-md group-hover:rotate-6 transition-transform">
                         ▶
                     </div>
                     <div>
-                        <h3 class="font-bold text-xs text-[#2D312E]">YouTube Kanalımızı Ziyaret Edin</h3>
+                        <h3 class="font-bold text-xs text-[#2D312E] group-hover:text-red-600 transition-colors">YouTube Kanalımızı Ziyaret Edin</h3>
                         <p class="text-[11px] text-stone-500">İlham veren videoları ve hikayeleri izleyin</p>
                     </div>
                 </div>
-                <span class="text-stone-300 group-hover:translate-x-1 group-hover:text-red-500 transition text-sm">→</span>
+                <span class="w-7 h-7 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:translate-x-1 group-hover:bg-red-100 group-hover:text-red-600 transition text-xs">→</span>
             </a>
 
             <!-- Web Chat / Messaging Connection Button -->
-            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 bg-white hover:bg-emerald-50/50 border border-[#F4EFE6] rounded-2xl shadow-2xs transition group">
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 bg-white/90 hover:bg-emerald-50/40 border border-[#F4EFE6] rounded-2xl shadow-2xs transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group">
                 <div class="flex items-center space-x-3.5">
-                    <div class="w-11 h-11 bg-[#6B7A63] text-white rounded-2xl flex items-center justify-center font-bold text-sm shadow-sm group-hover:scale-105 transition">
+                    <div class="w-12 h-12 bg-gradient-to-br from-[#6B7A63] to-[#55634e] text-white rounded-2xl flex items-center justify-center font-bold text-sm shadow-md group-hover:rotate-6 transition-transform">
                         💬
                     </div>
                     <div>
-                        <h3 class="font-bold text-xs text-[#2D312E]">Birebir Sohbet ve Soru Hattı</h3>
+                        <h3 class="font-bold text-xs text-[#2D312E] group-hover:text-[#6B7A63] transition-colors">Birebir Sohbet ve Soru Hattı</h3>
                         <p class="text-[11px] text-stone-500">Güvenli ve gizli bir ortamda sorularınızı sorun</p>
                     </div>
                 </div>
-                <span class="text-stone-300 group-hover:translate-x-1 group-hover:text-[#6B7A63] transition text-sm">→</span>
+                <span class="w-7 h-7 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:translate-x-1 group-hover:bg-emerald-100 group-hover:text-[#6B7A63] transition text-xs">→</span>
             </a>
         </section>
 
+        <!-- Q&A Section -->
         <section class="space-y-2.5 pt-1">
-            <h2 class="font-bold text-stone-700 text-[11px] px-1 tracking-wider uppercase">Sık Sorulan Sorular ve Düşünceler</h2>
+            <h2 class="font-bold text-stone-700 text-[11px] px-1 tracking-wider uppercase flex items-center gap-1.5">
+                <span>💡</span> Sık Sorulan Sorular ve Düşünceler
+            </h2>
             
             <div class="space-y-2.5">
                 <!-- Accordion Item 1 -->
-                <div class="bg-white border border-[#F4EFE6] rounded-2xl overflow-hidden shadow-2xs">
-                    <button onclick="toggleAccordion(1)" class="w-full flex justify-between items-center p-4 text-left font-medium text-xs text-[#2D312E] hover:bg-stone-50 transition">
-                        <span>Hristiyanlık ve İslam arasındaki temel ortak noktalar ve farklar nelerdir?</span>
-                        <span id="icon-1" class="text-stone-400 transition-transform duration-300 text-xs">▼</span>
+                <div class="bg-white/90 border border-[#F4EFE6] rounded-2xl overflow-hidden shadow-2xs transition-all">
+                    <button onclick="toggleAccordion(1)" class="w-full flex justify-between items-center p-4 text-left font-medium text-xs text-[#2D312E] hover:bg-stone-50/60 transition">
+                        <span class="pr-2">Hristiyanlık ve İslam arasındaki temel ortak noktalar ve farklar nelerdir?</span>
+                        <span id="icon-1" class="text-stone-400 transition-transform duration-300 text-xs font-bold">▼</span>
                     </button>
-                    <div id="content-1" class="hidden px-4 pb-4 text-[11px] text-stone-600 leading-relaxed border-t border-[#F4EFE6] pt-3">
+                    <div id="content-1" class="hidden px-4 pb-4 text-[11px] text-stone-600 leading-relaxed border-t border-[#F4EFE6]/60 pt-3 bg-stone-50/30">
                         Her iki gelenek de tek bir Yaratıcıya, merhamete, iyiliğe ve komşu sevgisine büyük değer verir. Temel ayrımlar ise İsa Mesih'in (Hz. İsa) kimliği, O'nun çarmıhtaki kurtarış lütfu ve Tanrı ile kişisel yakınlık anlayışındadır. Kutsal Kitap üzerinden Tanrı'nın derin sevgisini ve lütfunu incelemeye davet ediyoruz.
                     </div>
                 </div>
 
                 <!-- Accordion Item 2 -->
-                <div class="bg-white border border-[#F4EFE6] rounded-2xl overflow-hidden shadow-2xs">
-                    <button onclick="toggleAccordion(2)" class="w-full flex justify-between items-center p-4 text-left font-medium text-xs text-[#2D312E] hover:bg-stone-50 transition">
-                        <span>Kişisel bir dua, yönlendirme veya destek isteyebilir miyim?</span>
-                        <span id="icon-2" class="text-stone-400 transition-transform duration-300 text-xs">▼</span>
+                <div class="bg-white/90 border border-[#F4EFE6] rounded-2xl overflow-hidden shadow-2xs transition-all">
+                    <button onclick="toggleAccordion(2)" class="w-full flex justify-between items-center p-4 text-left font-medium text-xs text-[#2D312E] hover:bg-stone-50/60 transition">
+                        <span class="pr-2">Kişisel bir dua, yönlendirme veya destek isteyebilir miyim?</span>
+                        <span id="icon-2" class="text-stone-400 transition-transform duration-300 text-xs font-bold">▼</span>
                     </button>
-                    <div id="content-2" class="hidden px-4 pb-4 text-[11px] text-stone-600 leading-relaxed border-t border-[#F4EFE6] pt-3">
+                    <div id="content-2" class="hidden px-4 pb-4 text-[11px] text-stone-600 leading-relaxed border-t border-[#F4EFE6]/60 pt-3 bg-stone-50/30">
                         Elbette. Hayatın getirdiği zorluklar, manevi arayışlar veya içsel huzursuzluklar konusunda bizimle dilediğiniz zaman çekinmeden iletişim kurabilir, gizlilik içinde dua desteği talep edebilirsiniz.
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="bg-white p-5 rounded-3xl shadow-xs border border-[#F4EFE6] space-y-4">
+        <!-- Email Inquiry Form Section -->
+        <section class="bg-white/90 backdrop-blur-sm p-5 rounded-3xl shadow-xs border border-[#F4EFE6] space-y-4">
             <div>
-                <h2 class="font-bold text-[#2D312E] text-xs tracking-wider uppercase">Gizli E-posta İletişim Formu</h2>
+                <h2 class="font-bold text-[#2D312E] text-xs tracking-wider uppercase flex items-center gap-1.5">
+                    <span>🔒</span> Gizli E-posta İletişim Formu
+                </h2>
                 <p class="text-[11px] text-stone-500 mt-0.5">Merak ettiğiniz konuları veya paylaşımlarınızı güvenle yazın.</p>
             </div>
 
@@ -139,7 +167,7 @@
                     <label class="block text-[11px] font-medium text-stone-700 mb-1">Mesajınız</label>
                     <textarea id="message" rows="3" required class="w-full px-3.5 py-2.5 text-xs bg-[#FDFBF7] border border-[#F4EFE6] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#6B7A63] transition resize-none" placeholder="Düşüncelerinizi buraya yazın..."></textarea>
                 </div>
-                <button type="submit" class="w-full py-3 bg-[#2D312E] text-white font-medium text-xs rounded-xl shadow-sm hover:bg-stone-800 transition active:scale-[0.99]">
+                <button type="submit" class="w-full py-3 bg-[#2D312E] hover:bg-stone-800 text-white font-medium text-xs rounded-xl shadow-md transition-all active:scale-[0.98]">
                     Mesajı Gönder
                 </button>
             </form>
@@ -152,3 +180,36 @@
         </section>
 
     </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-4 text-center text-[10px] text-stone-400 border-t border-[#F4EFE6]/60 mt-4">
+        <p>© 2026 Halal-Hakikat-Hub. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- JavaScript for Accordion & Form Interaction -->
+    <script>
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('inquiryForm');
+            const successMsg = document.getElementById('successMessage');
+            
+            // Hide form and show success message smoothly
+            form.style.display = 'none';
+            successMsg.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
